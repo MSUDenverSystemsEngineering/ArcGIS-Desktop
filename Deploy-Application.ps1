@@ -65,12 +65,12 @@ Try {
 	## Variables: Application
 	[string]$appVendor = 'ESRI'
 	[string]$appName = 'ArcGIS Desktop'
-	[string]$appVersion = '10.5.1'
+	[string]$appVersion = '10.7.1'
 	[string]$appArch = ''
 	[string]$appLang = 'EN'
 	[string]$appRevision = '01'
 	[string]$appScriptVersion = '3.7.0.1'
-	[string]$appScriptDate = '08/08/2018'
+	[string]$appScriptDate = '08/04/2019'
 	[string]$appScriptAuthor = 'Steve Patterson'
 	##*===============================================
 	## Variables: Install Titles (Only set here to override defaults set by the toolkit)
@@ -125,9 +125,16 @@ Try {
 		Show-InstallationProgress
 
 		## <Perform Pre-Installation tasks here>
+		# Uninstalls 10.3
 		If (Test-Path -Path "C:\Program Files (x86)\ArcGIS\Desktop10.3\bin\ArcMap.exe" -PathType 'Leaf') {
 			Execute-MSI -Action Uninstall -Path '{831DD630-F230-49C6-AD41-312E8E0F9CEE}'
 			}
+		# Uninstalls 10.5
+		If (Test-Path -Path "C:\Program Files (x86)\ArcGIS\Desktop10.5\bin\ArcMap.exe" -PathType 'Leaf') {
+			Execute-MSI -Action Uninstall -Path '{4740FC57-60FE-45BB-B513-3309F6B73183}'
+			}
+
+
 
 
 		##*===============================================
@@ -184,7 +191,7 @@ Try {
 		}
 
 		# <Perform Uninstallation tasks here>
-		Execute-MSI -Action Uninstall -Path '{4740FC57-60FE-45BB-B513-3309F6B73183}'
+		Execute-MSI -Action Uninstall -Path '{69262D87-3697-492B-ABED-765DDC15118B}'
 
 		##*===============================================
 		##* POST-UNINSTALLATION
@@ -214,8 +221,8 @@ Catch {
 # SIG # Begin signature block
 # MIIZ7wYJKoZIhvcNAQcCoIIZ4DCCGdwCAQExDzANBglghkgBZQMEAgEFADB5Bgor
 # BgEEAYI3AgEEoGswaTA0BgorBgEEAYI3AgEeMCYCAwEAAAQQH8w7YFlLCE63JNLG
-# KX7zUQIBAAIBAAIBAAIBAAIBADAxMA0GCWCGSAFlAwQCAQUABCD9nQZ+JBM2nJox
-# SSfSRKiA5pWAUFmYrQWL0BdsWtHA3KCCFFwwggQUMIIC/KADAgECAgsEAAAAAAEv
+# KX7zUQIBAAIBAAIBAAIBAAIBADAxMA0GCWCGSAFlAwQCAQUABCCFK703E5F+BZKq
+# ZGvfG/uA2dFUeajw5S37rjSZvMo2v6CCFFwwggQUMIIC/KADAgECAgsEAAAAAAEv
 # TuFS1zANBgkqhkiG9w0BAQUFADBXMQswCQYDVQQGEwJCRTEZMBcGA1UEChMQR2xv
 # YmFsU2lnbiBudi1zYTEQMA4GA1UECxMHUm9vdCBDQTEbMBkGA1UEAxMSR2xvYmFs
 # U2lnbiBSb290IENBMB4XDTExMDQxMzEwMDAwMFoXDTI4MDEyODEyMDAwMFowUjEL
@@ -329,26 +336,26 @@ Catch {
 # CxMISW5Db21tb24xJTAjBgNVBAMTHEluQ29tbW9uIFJTQSBDb2RlIFNpZ25pbmcg
 # Q0ECEAcDcdEPeVpAcZkrlAdim+IwDQYJYIZIAWUDBAIBBQCggYQwGAYKKwYBBAGC
 # NwIBDDEKMAigAoAAoQKAADAZBgkqhkiG9w0BCQMxDAYKKwYBBAGCNwIBBDAcBgor
-# BgEEAYI3AgELMQ4wDAYKKwYBBAGCNwIBFTAvBgkqhkiG9w0BCQQxIgQg9AP73Wjj
-# MxbZ3mL9xBCPPlKPd0drXeONPu+fBif6Yb0wDQYJKoZIhvcNAQEBBQAEggEAbShS
-# q/HvhN6bHrRVB6maoMdTFsnzk+D7VHbVrC3BvTXFaROtrfDLywKnsqVMXJZhFNr5
-# vweYdFekPJJO05gYsVEzovNHQSOGmPP/03PqXrKsA1Ze6Xw92m7sfbn6nE8jpCiU
-# RoAAIjWNB614cvr8I2WtooA7Z4l2L/2J10RfbOvQp9X3T2cPGvBdsv/xKCiIiwWo
-# IqErXHJaTzRehdVXHeCk9jVgHhTEcZGUG4a6kwNBDAxMVd5QACaq1JSURgiiHvTn
-# ptVzWwRRsyPOxRSOm1SwaSORT1XKCy5EZqxWqVHuMv33aVVTcdNsoCcu0dj8VOCr
-# Kb2IomBBET92BKgQvqGCAqIwggKeBgkqhkiG9w0BCQYxggKPMIICiwIBATBoMFIx
+# BgEEAYI3AgELMQ4wDAYKKwYBBAGCNwIBFTAvBgkqhkiG9w0BCQQxIgQgmDCnuFh1
+# PwnCV8ofVHw1Iw0ll8Yu/u/CsN58z7eKyA8wDQYJKoZIhvcNAQEBBQAEggEAyCm6
+# 039iYgiO9q7wuhu8cy3DaZqu9w7wlIG8+GYiIBYHBTPsW/GdpNPFlqeHDuA3h16J
+# G20WlutJDJ27GSdoUwWaaPYZF3rT5x7d9vcKnI1MBB+4ur4D1KlBRqDSd56pz9k/
+# Xfwg74/+43El4RlEa6qazWRMUxmg5urH1/XQT0Ld6+i4eo+QpEry6oP8kg2t9QwD
+# 6A8wWZr7hbr2Dkg0woG2bbAqYajVXfGpGtXe7PkOa4I1wvZDDzf7xrwLb9gsZMMk
+# EiyWUfHs3+GZ+yLlbaPQ0DgsoPb4kvwAv2RfapAprvnqVztDSkQeXYsz8N6mxITU
+# JJHpQSHVwPQ+gtWykqGCAqIwggKeBgkqhkiG9w0BCQYxggKPMIICiwIBATBoMFIx
 # CzAJBgNVBAYTAkJFMRkwFwYDVQQKExBHbG9iYWxTaWduIG52LXNhMSgwJgYDVQQD
 # Ex9HbG9iYWxTaWduIFRpbWVzdGFtcGluZyBDQSAtIEcyAhIRIdaZp2SXPvH4Qn7p
 # GcxTQRQwCQYFKw4DAhoFAKCB/TAYBgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwG
-# CSqGSIb3DQEJBTEPFw0xODA4MDgyMTIwNDBaMCMGCSqGSIb3DQEJBDEWBBTX/GrN
-# V64l7mg4exjnp+Js+vtr9TCBnQYLKoZIhvcNAQkQAgwxgY0wgYowgYcwgYQEFGO4
+# CSqGSIb3DQEJBTEPFw0xOTA4MDQxNjIzMDVaMCMGCSqGSIb3DQEJBDEWBBRrq4nk
+# 3QpUrv2gxlqKbJNJ/K8ehDCBnQYLKoZIhvcNAQkQAgwxgY0wgYowgYcwgYQEFGO4
 # L6th9YOQlpUFCwAknFApM+x5MGwwVqRUMFIxCzAJBgNVBAYTAkJFMRkwFwYDVQQK
 # ExBHbG9iYWxTaWduIG52LXNhMSgwJgYDVQQDEx9HbG9iYWxTaWduIFRpbWVzdGFt
 # cGluZyBDQSAtIEcyAhIRIdaZp2SXPvH4Qn7pGcxTQRQwDQYJKoZIhvcNAQEBBQAE
-# ggEAjNp3bjDBaiLUcMBomoLHUT46YTn8uBupSIf9joR0B1C7g4M4EIMpb98VZA8w
-# T2rJnxougRspAwA2OJ17gDkdk+mj2ybO7T6xCn/5Rz7F5kg6SJ1VLNu18vI7X2AT
-# WrezSBx1BQlcrab1X5xrKxxpGji4hsLM/khRkiGjzXCY+LdTpprhr/iFJF50TBYw
-# g70/Z5JIHgBS1QbZyzm8Zd11K0MsXQaBgtS6ZbbFDzG+cfVBjCNZUoSwMuPnJqgM
-# MjkCn0CImXP/1X13Mv37kSiGt4rmmsJy/X01JdiOhlGGx0ys07yWyEuy3ix3XL6Y
-# WJ/3SNm2FJfCR+DMt0IrD4CM+Q==
+# ggEAJtCBCYWVO6rqcRZ2mlPFvw07X/21VwzxwuHy1Z36s8PENqwcyOWoj7t6nB0g
+# WArEfDmaY7GKhBrbSE0tvwP7paI9KAJSk1adaknQEQI8ke+mhw5cvFeL0hDfXDAJ
+# e01iOYVdLwVyXlDyNEVnwikYASgkm/b2DeBY+kZwpFOi/zDFkSE+GYRbIy9ppCvJ
+# 2UexR7qiGjLBexaM+LSLsbN1++qN09JaHJzZlKFvlrPTnLRvpnlY1q7TJwS8plfY
+# llopkJOZ1LHgojD7UZviOF9uOYa3VI6kGwBnw+enLe3myrJ71+KCKnxLUJo1zcpu
+# v+T9drt214Q0Y/2BHu+nxqgHxg==
 # SIG # End signature block
