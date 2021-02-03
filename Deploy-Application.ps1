@@ -149,7 +149,7 @@ Try {
 		}
 
 		## <Perform Installation tasks here>
-		Execute-Process -Path "$dirFiles\Setup.exe" -Parameters 'ESRI_LICENSE_HOST=27004@VMWAS22 GIS_SOFTWARE_CLASS=Professional SEAT_PREFERENCE=Float DESKTOP_CONFIG=TRUE /qn' -WindowStyle 'Hidden' -PassThru
+		Execute-Process -Path "$dirFiles\Setup.exe" -Parameters 'ESRI_LICENSE_HOST=27004@VMWAS22.MSUDENVER.EDU GIS_SOFTWARE_CLASS=Professional SEAT_PREFERENCE=Float DESKTOP_CONFIG=TRUE /qn' -WindowStyle 'Hidden' -PassThru
 
 		##*===============================================
 		##* POST-INSTALLATION
